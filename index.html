@@ -13,25 +13,25 @@
             justify-content: center;
             height: 100vh;
             margin: 0;
-            font-family: 'Comic Sans MS', cursive, sans-serif; /* Tatlı bir font */
-            overflow: hidden; /* Kalplerin dışarı taşmasını engellemek için */
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            overflow: hidden;
         }
         h1 {
             cursor: pointer;
-            font-size: 4em; /* Yazı büyütüldü */
-            animation: rgbAnimation 3s infinite; /* Renk değişimi animasyonu */
+            font-size: 4em;
+            animation: rgbAnimation 3s infinite;
         }
         #love-message {
-            display: none; /* Başlangıçta gizli */
-            font-size: 2em; /* Yazı boyutu büyütüldü */
+            display: none;
+            font-size: 2em;
             text-align: center;
             margin-top: 20px;
-            animation: rgbAnimation 3s infinite; /* Renk değişimi animasyonu */
+            animation: rgbAnimation 3s infinite;
         }
         #signature {
-            font-size: 2em; /* İmza yazısı büyütüldü */
-            animation: rgbAnimation 3s infinite; /* Renk değişimi animasyonu */
-            display: none; /* Başlangıçta gizli */
+            font-size: 2em;
+            animation: rgbAnimation 3s infinite;
+            display: none;
         }
         #note-button, #song-button {
             margin-top: 20px;
@@ -40,8 +40,8 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            font-size: 1.5em; /* Buton yazı boyutu */
-            animation: rgbAnimation 3s infinite; /* Renk değişimi animasyonu */
+            font-size: 1.5em;
+            animation: rgbAnimation 3s infinite;
         }
         @keyframes rgbAnimation {
             0% { color: rgb(255, 0, 0); }
@@ -55,7 +55,7 @@
             color: red;
             font-size: 2em;
             animation: float 3s ease-in forwards;
-            pointer-events: none; /* Kalplerin tıklamaya engel olmaması için */
+            pointer-events: none;
         }
         @keyframes float {
             0% { transform: translateY(0); opacity: 1; }
@@ -64,9 +64,9 @@
         #final-message {
             position: absolute;
             bottom: 20px;
-            font-size: 3em; /* Yazı boyutu büyütüldü */
-            color: rgb(255, 0, 255); /* Renk ayarı */
-            animation: rgbAnimation 3s infinite; /* Renk değişimi animasyonu */
+            font-size: 3em;
+            color: rgb(255, 0, 255);
+            animation: rgbAnimation 3s infinite;
         }
     </style>
 </head>
@@ -80,24 +80,24 @@
 
     <script>
         document.getElementById('note-button').onclick = function() {
-            document.getElementById('love-message').style.display = 'block'; // Not mesajını göster
-            document.getElementById('signature').style.display = 'block'; // Hewski yazısını göster
+            document.getElementById('love-message').style.display = 'block';
+            document.getElementById('signature').style.display = 'block';
         };
 
         document.getElementById('song-button').onclick = function() {
-            window.open('https://www.youtube.com/watch?v=zDVeN7tYhz4', '_blank'); // Şarkı linkini aç
+            window.open('https://www.youtube.com/watch?v=zDVeN7tYhz4', '_blank');
         };
 
         function createHeart() {
             const heart = document.createElement('div');
             heart.className = 'heart';
             heart.innerHTML = '❤️';
-            heart.style.left = Math.random() * window.innerWidth + 'px'; // Rastgele konum
-            heart.style.top = '100vh'; // Ekranın altından başla
+            heart.style.left = Math.random() * window.innerWidth + 'px';
+            heart.style.top = '100vh';
             document.body.appendChild(heart);
             setTimeout(() => {
                 heart.remove();
-            }, 3000); // Kalp 3 saniye sonra silinir
+            }, 3000);
         }
 
         setInterval(createHeart, 500); // Her 500 ms'de bir kalp oluştur
