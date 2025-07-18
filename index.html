@@ -97,6 +97,10 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
+    audio {
+      display: none;
+    }
+
     @media (max-width: 600px) {
       h1 { font-size: 2em; }
       #love-message, #signature, #final-message { font-size: 1.2em; }
@@ -114,20 +118,35 @@
 
   <div id="final-message">Seni çok seviyorum</div>
 
+  <!-- Arka plan müziği -->
+  <audio id="bg-music" autoplay loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mp3">
+  </audio>
+
+  <!-- Ses efekti -->
+  <audio id="click-sound">
+    <source src="https://www.soundjay.com/buttons/sounds/button-29.mp3" type="audio/mp3">
+  </audio>
+
   <script>
+    const emojis = ["❤️", "💕", "💖", "🌸", "🌟", "💘", "💞", "🎀"];
+    const clickSound = document.getElementById("click-sound");
+
     document.getElementById('note-button').onclick = function () {
       document.getElementById('love-message').style.display = 'block';
       document.getElementById('signature').style.display = 'block';
+      clickSound.play();
     };
 
     document.getElementById('song-button').onclick = function () {
+      clickSound.play();
       window.open('https://www.youtube.com/watch?v=zDVeN7tYhz4', '_blank');
     };
 
     function createHeart() {
       const heart = document.createElement('div');
       heart.className = 'heart';
-      heart.textContent = '❤️';
+      heart.textContent = emojis[Math.floor(Math.random() * emojis.length)];
       heart.style.left = Math.random() * window.innerWidth + 'px';
       heart.style.top = '100vh';
       heart.style.fontSize = `${Math.random() * 1.5 + 1}em`;
