@@ -1,163 +1,181 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aşk Mesajı</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>x’ciğim</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&family=Quicksand:wght@400;600&display=swap" rel="stylesheet" />
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
+    /* Genel stil */
     body {
-      background: linear-gradient(to bottom right, #ffe0f0, #ffccdd);
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to top right, #ffe0ec, #f7f7ff);
+      font-family: 'Poppins', 'Quicksand', sans-serif;
+      overflow-x: hidden;
+      position: relative;
+      height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      min-height: 100vh;
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      padding: 20px;
       text-align: center;
-      overflow: hidden;
     }
 
     h1 {
-      font-size: 2.5em;
-      font-weight: 600;
-      color: #ff3399;
-      animation: colorPulse 4s infinite;
-      margin: 0.5em 0;
-      cursor: pointer;
-    }
-
-    #love-message, #signature {
-      display: none;
-      font-size: 1.4em;
-      margin-top: 15px;
+      font-size: 2.5rem;
       color: #d6336c;
-      animation: fadeIn 1s ease-in-out;
+      margin-bottom: 1rem;
+      animation: fadeInDown 1.5s ease;
     }
 
-    #signature {
-      font-weight: bold;
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      animation: fadeIn 2s ease;
     }
 
     button {
-      margin-top: 20px;
-      padding: 12px 24px;
-      font-size: 1.2em;
+      padding: 0.8rem 1.5rem;
+      font-size: 1rem;
+      background-color: #f9c5d1;
       border: none;
-      border-radius: 8px;
-      background-color: #fff0f5;
-      color: #d6336c;
-      font-weight: 600;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      border-radius: 1.5rem;
       cursor: pointer;
-      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: background 0.3s;
     }
 
     button:hover {
-      background-color: #ffcce0;
-      transform: scale(1.05);
+      background-color: #f497b0;
     }
 
-    #final-message {
-      margin-top: 30px;
-      font-size: 1.8em;
-      color: #cc0066;
-      animation: colorPulse 4s infinite;
+    .note {
+      margin: 1rem auto;
+      max-width: 90%;
+      background: rgba(255, 255, 255, 0.7);
+      padding: 1rem;
+      border-radius: 1rem;
+      display: none;
+      font-size: 1.1rem;
+      color: #333;
+      animation: fadeIn 1.2s ease forwards;
     }
 
-    .heart {
+    .footer-message {
       position: absolute;
-      font-size: 1.8em;
+      bottom: 1rem;
+      font-size: 1.5rem;
+      font-weight: bold;
       color: #ff4d88;
-      animation: float 4s ease-in forwards;
-      pointer-events: none;
+      text-shadow: 0 0 10px #ff99cc;
+      animation: glow 2s ease-in-out infinite alternate;
     }
 
-    @keyframes colorPulse {
-      0% { color: #ff3399; }
-      25% { color: #ff6699; }
-      50% { color: #ff99cc; }
-      75% { color: #ff6699; }
-      100% { color: #ff3399; }
+    /* Emoji animasyonu */
+    .emoji {
+      position: absolute;
+      bottom: -20px;
+      font-size: 1.5rem;
+      animation: floatUp 5s linear infinite;
+      opacity: 0;
     }
 
-    @keyframes float {
-      0% { transform: translateY(0); opacity: 1; }
-      100% { transform: translateY(-100vh); opacity: 0; }
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0);
+        opacity: 0;
+      }
+      20% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100vh);
+        opacity: 0;
+      }
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 10px #ff99cc;
+      }
+      to {
+        text-shadow: 0 0 20px #ff66b2, 0 0 30px #ff99cc;
+      }
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-30px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    audio {
-      display: none;
-    }
-
     @media (max-width: 600px) {
-      h1 { font-size: 2em; }
-      #love-message, #signature, #final-message { font-size: 1.2em; }
-      button { font-size: 1em; padding: 10px 20px; }
+      h1 {
+        font-size: 2rem;
+      }
+      .footer-message {
+        font-size: 1.2rem;
+      }
     }
   </style>
 </head>
 <body>
-  <h1 id="title">x'ciğim</h1>
-  <div id="love-message">Seninle tanıştığımdan beri bana çok iyi geliyorsun. Seni asla bırakmayacağım, yemin ederim 💖</div>
-  <div id="signature">x</div>
+  <h1>x’ciğim</h1>
 
-  <button id="note-button">Notu Gör</button>
-  <button id="song-button">Şarkımız 🎵</button>
+  <div class="buttons">
+    <button onclick="playClick(); showNote();">Notu oku</button>
+    <button onclick="playClick(); openSong();">Şarkımız</button>
+  </div>
 
-  <div id="final-message">Seni çok seviyorum</div>
+  <div class="note" id="note">
+    Canım, sen hayatımın en güzel anısısın. Varlığın, gülüşün ve sevginle her şey daha anlamlı. Seni her gün daha çok seviyorum. ❤ï
+  </div>
 
-  <!-- Arka plan müziği -->
-  <audio id="bg-music" autoplay loop>
-    <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mp3">
+  <div class="footer-message">Seni çok seviyorum</div>
+
+  <!-- Arka plan müzik -->
+  <audio id="bgMusic" autoplay loop volume="0.3">
+    <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
   </audio>
 
-  <!-- Ses efekti -->
-  <audio id="click-sound">
-    <source src="https://www.soundjay.com/buttons/sounds/button-29.mp3" type="audio/mp3">
+  <!-- Tıklama sesi -->
+  <audio id="clickSound">
+    <source src="https://www.soundjay.com/buttons/sounds/button-29.mp3" type="audio/mpeg">
   </audio>
 
+  <!-- Emoji animasyonu -->
   <script>
-    const emojis = ["❤️", "💕", "💖", "🌸", "🌟", "💘", "💞", "🎀"];
-    const clickSound = document.getElementById("click-sound");
+    const emojis = ['❤️','💖','🌸','🎀','🤍','💕'];
+    function createEmoji() {
+      const emoji = document.createElement('div');
+      emoji.classList.add('emoji');
+      emoji.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+      emoji.style.left = Math.random() * 100 + 'vw';
+      emoji.style.fontSize = (Math.random() * 1.5 + 1) + 'rem';
+      document.body.appendChild(emoji);
+      setTimeout(() => emoji.remove(), 5000);
+    }
+    setInterval(createEmoji, 700);
 
-    document.getElementById('note-button').onclick = function () {
-      document.getElementById('love-message').style.display = 'block';
-      document.getElementById('signature').style.display = 'block';
-      clickSound.play();
-    };
-
-    document.getElementById('song-button').onclick = function () {
-      clickSound.play();
-      window.open('https://www.youtube.com/watch?v=zDVeN7tYhz4', '_blank');
-    };
-
-    function createHeart() {
-      const heart = document.createElement('div');
-      heart.className = 'heart';
-      heart.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-      heart.style.left = Math.random() * window.innerWidth + 'px';
-      heart.style.top = '100vh';
-      heart.style.fontSize = `${Math.random() * 1.5 + 1}em`;
-      document.body.appendChild(heart);
-
-      setTimeout(() => {
-        heart.remove();
-      }, 4000);
+    function showNote() {
+      const note = document.getElementById('note');
+      note.style.display = 'block';
     }
 
-    setInterval(createHeart, 600);
+    function openSong() {
+      window.open('https://www.youtube.com/watch?v=YOUTUBE_SONG_ID', '_blank');
+    }
+
+    function playClick() {
+      document.getElementById('clickSound').play();
+    }
   </script>
 </body>
 </html>
