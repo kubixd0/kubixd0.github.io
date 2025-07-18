@@ -1,106 +1,144 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aşk Mesajı</title>
-    <style>
-        body {
-            background-color: pink;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-            font-family: 'Comic Sans MS', cursive, sans-serif;
-            overflow: hidden;
-        }
-        h1 {
-            cursor: pointer;
-            font-size: 4em;
-            animation: rgbAnimation 3s infinite;
-        }
-        #love-message {
-            display: none;
-            font-size: 2em;
-            text-align: center;
-            margin-top: 20px;
-            animation: rgbAnimation 3s infinite;
-        }
-        #signature {
-            font-size: 2em;
-            animation: rgbAnimation 3s infinite;
-            display: none;
-        }
-        #note-button, #song-button {
-            margin-top: 20px;
-            padding: 10px 20px;
-            background-color: yellow;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1.5em;
-            animation: rgbAnimation 3s infinite;
-        }
-        @keyframes rgbAnimation {
-            0% { color: rgb(255, 0, 0); }
-            25% { color: rgb(0, 255, 0); }
-            50% { color: rgb(0, 0, 255); }
-            75% { color: rgb(255, 255, 0); }
-            100% { color: rgb(255, 0, 255); }
-        }
-        .heart {
-            position: absolute;
-            color: red;
-            font-size: 2em;
-            animation: float 3s ease-in forwards;
-            pointer-events: none;
-        }
-        @keyframes float {
-            0% { transform: translateY(0); opacity: 1; }
-            100% { transform: translateY(-100vh); opacity: 0; }
-        }
-        #final-message {
-            position: absolute;
-            bottom: 20px;
-            font-size: 3em;
-            color: rgb(255, 0, 255);
-            animation: rgbAnimation 3s infinite;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aşk Mesajı</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(to bottom right, #ffe0f0, #ffccdd);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      padding: 20px;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      font-weight: 600;
+      color: #ff3399;
+      animation: colorPulse 4s infinite;
+      margin: 0.5em 0;
+      cursor: pointer;
+    }
+
+    #love-message, #signature {
+      display: none;
+      font-size: 1.4em;
+      margin-top: 15px;
+      color: #d6336c;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    #signature {
+      font-weight: bold;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px 24px;
+      font-size: 1.2em;
+      border: none;
+      border-radius: 8px;
+      background-color: #fff0f5;
+      color: #d6336c;
+      font-weight: 600;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #ffcce0;
+      transform: scale(1.05);
+    }
+
+    #final-message {
+      margin-top: 30px;
+      font-size: 1.8em;
+      color: #cc0066;
+      animation: colorPulse 4s infinite;
+    }
+
+    .heart {
+      position: absolute;
+      font-size: 1.8em;
+      color: #ff4d88;
+      animation: float 4s ease-in forwards;
+      pointer-events: none;
+    }
+
+    @keyframes colorPulse {
+      0% { color: #ff3399; }
+      25% { color: #ff6699; }
+      50% { color: #ff99cc; }
+      75% { color: #ff6699; }
+      100% { color: #ff3399; }
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(-100vh); opacity: 0; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 2em; }
+      #love-message, #signature, #final-message { font-size: 1.2em; }
+      button { font-size: 1em; padding: 10px 20px; }
+    }
+  </style>
 </head>
 <body>
-    <h1 id="title">x'ciğim</h1>
-    <div id="love-message">Seninle Tanıştığım günden beri bana çok iyi geliyorsun seni asla bırakmayacağım Yemin Ederim</div>
-    <div id="signature">x</div>
-    <button id="note-button">Not Tıkla</button>
-    <button id="song-button">Şarkımız</button>
-    <div id="final-message">Seni çok seviyorum</div>
+  <h1 id="title">x'ciğim</h1>
+  <div id="love-message">Seninle tanıştığımdan beri bana çok iyi geliyorsun. Seni asla bırakmayacağım, yemin ederim 💖</div>
+  <div id="signature">x</div>
 
-    <script>
-        document.getElementById('note-button').onclick = function() {
-            document.getElementById('love-message').style.display = 'block';
-            document.getElementById('signature').style.display = 'block';
-        };
+  <button id="note-button">Notu Gör</button>
+  <button id="song-button">Şarkımız 🎵</button>
 
-        document.getElementById('song-button').onclick = function() {
-            window.open('https://www.youtube.com/watch?v=zDVeN7tYhz4', '_blank');
-        };
+  <div id="final-message">Seni çok seviyorum</div>
 
-        function createHeart() {
-            const heart = document.createElement('div');
-            heart.className = 'heart';
-            heart.innerHTML = '❤️';
-            heart.style.left = Math.random() * window.innerWidth + 'px';
-            heart.style.top = '100vh';
-            document.body.appendChild(heart);
-            setTimeout(() => {
-                heart.remove();
-            }, 3000);
-        }
+  <script>
+    document.getElementById('note-button').onclick = function () {
+      document.getElementById('love-message').style.display = 'block';
+      document.getElementById('signature').style.display = 'block';
+    };
 
-        setInterval(createHeart, 500); // Her 500 ms'de bir kalp oluştur
-    </script>
+    document.getElementById('song-button').onclick = function () {
+      window.open('https://www.youtube.com/watch?v=zDVeN7tYhz4', '_blank');
+    };
+
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.textContent = '❤️';
+      heart.style.left = Math.random() * window.innerWidth + 'px';
+      heart.style.top = '100vh';
+      heart.style.fontSize = `${Math.random() * 1.5 + 1}em`;
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 4000);
+    }
+
+    setInterval(createHeart, 600);
+  </script>
 </body>
 </html>
